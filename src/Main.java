@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -8,9 +10,16 @@ public class Main {
         Ville villeD = new Ville("D",3,2);
         Ville villeE = new Ville("E",3,5);
         Ville villeF = new Ville("F",7,2);
-        Ville p0 = new Ville("P0",0,0);
-        Ville p7 = new Ville("P7",0,0);
 
-        System.out.println(villeA.calculDistance(villeB));
+//        System.out.println(villeA.calculDistance(villeB));
+        ArrayList<Ville> villeArrayList = new ArrayList<>();
+        villeArrayList.add(villeA);
+        villeArrayList.add(villeB);
+        villeArrayList.add(villeC);
+        villeArrayList.add(villeD);
+        villeArrayList.add(villeE);
+        villeArrayList.add(villeF);
+
+        Enumeration enumeration = new Enumeration(villeArrayList);
     }
 }
