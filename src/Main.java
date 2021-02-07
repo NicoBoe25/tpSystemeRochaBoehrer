@@ -10,6 +10,8 @@ public class Main {
         Ville villeD = new Ville("D",3,2);
         Ville villeE = new Ville("E",3,5);
         Ville villeF = new Ville("F",7,2);
+        Ville villeP0 = new Ville("0",0,0);
+        Ville villeP7 = new Ville("7",0,0);
 
 //        System.out.println(villeA.calculDistance(villeB));
         ArrayList<Ville> villeArrayList = new ArrayList<>();
@@ -21,5 +23,6 @@ public class Main {
         villeArrayList.add(villeF);
 
         Enumeration enumeration = new Enumeration(villeArrayList);
+
     }
 }

@@ -19,4 +19,10 @@ public class Ville {
                 Math.pow(ville.getY()-this.getY(),2)
         );
     }
+
+    @Override
+    public String toString() {
+        return nom;
+    }
+
 }

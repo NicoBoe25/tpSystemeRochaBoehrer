@@ -1,39 +1,80 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Enumeration {
     private ArrayList<Ville> listVilles;
-    private ArrayList<ArrayList<Ville>> listOfListVilles;
-    private ArrayList<Double> listDistancesParcours;
 
-    private int idMeilleureSolution;
-    public int getIdMeilleureSolution() {return idMeilleureSolution; }
-    public void setIdMeilleureSolution(int idMeilleureSolution) {this.idMeilleureSolution = idMeilleureSolution;}
+    private HashMap<Double, String> stringTreeMap;
+
+
 
     public Enumeration(ArrayList<Ville> villeArrayList) {
         this.listVilles = villeArrayList;
-        listDistancesParcours = new ArrayList<>();
+        stringTreeMap = new HashMap<>();
+
+        makeHeapList(listVilles.size(),listVilles);
+
+        System.out.println(stringTreeMap);
+
+        double ddd = findMeilleureDistance();
+        System.out.println(ddd);
+        System.out.println(stringTreeMap.get(ddd));
 
     }
 
-    public void setListDistancesParcours(){
-        for (int i = 0; i < listOfListVilles.size(); i++) {
-            double distanceAParcourir =0.0;
-            ArrayList<Ville> tempArrayList = listOfListVilles.get(i);
-            for (int j = 0; j < listOfListVilles.get(i).size()-1; j++) {
-                distanceAParcourir += tempArrayList.get(j).calculDistance(tempArrayList.get(j+1));
+    public void makeHeapList(int k, ArrayList<Ville> currentListVille){
+        if (k==1){
+//            System.out.println(currentListVille);
+            String s = toStringList(currentListVille);
+//            System.out.println(s);
+            Double d = calculDistanceList(currentListVille);
+            stringTreeMap.put(d,s);
+
+        }else {
+            makeHeapList(k-1, currentListVille);
+            for (int i = 0; i < k-2; i++) {
+                if (k%2==0){
+                    Collections.swap(currentListVille,i,k-1);
+                }else {
+                    Collections.swap(currentListVille,0,k-1);
+                }
+                makeHeapList(k-1,currentListVille);
             }
-            listDistancesParcours.add(distanceAParcourir);
         }
     }
 
+    private String toStringList(ArrayList<Ville> currentListVille) {
+        String s ="";
+        for (Ville ville: currentListVille          ) {
+            s+=ville.toString();
+        }
+        return s;
+    }
 
-    public void findMeilleureDistance(){
-        double bestResult = listDistancesParcours.get(0);
-        for (int i = 1; i < listDistancesParcours.size(); i++) {
-            if (bestResult<listDistancesParcours.get(i)){
-                bestResult = listDistancesParcours.get(i);
-                setIdMeilleureSolution(i);
+
+    public double calculDistanceList(ArrayList<Ville> listVilles){
+        double distanceAParcourir=0.0;
+        ArrayList<Ville> temp = new ArrayList<>();
+
+        for (Ville v:listVilles         ) {
+            temp.add(v);
+        }
+
+        temp.add(new Ville("0",0,0));
+        temp.add(0,new Ville("0",0,0));
+
+        for (int i = 0; i < temp.size()-1; i++) {
+            distanceAParcourir += temp.get(i).calculDistance(temp.get(i+1));
+        }
+        return distanceAParcourir;
+    }
+
+    public double findMeilleureDistance(){
+        double bestResult = 9999999999999999.9;
+        for (Double aDouble:this.stringTreeMap.keySet()      ) {
+            if (bestResult>aDouble){
+                bestResult = aDouble;
             }
         }
+        return bestResult;
     }
 }
