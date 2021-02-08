@@ -78,6 +78,7 @@ public class Enumeration {
         return bestResult;
     }
 
+
     public int test(){
         return stringTreeMap.size();
     }
