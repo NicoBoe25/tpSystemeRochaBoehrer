@@ -31,7 +31,7 @@ public class Enumeration {
 
         }else {
             makeHeapList(k-1, currentListVille);
-            for (int i = 0; i < k-2; i++) {
+            for (int i = 0; i <= k-2; i++) {
                 if (k%2==0){
                     Collections.swap(currentListVille,i,k-1);
                 }else {
@@ -76,5 +76,9 @@ public class Enumeration {
             }
         }
         return bestResult;
+    }
+
+    public int test(){
+        return stringTreeMap.size();
     }
 }
