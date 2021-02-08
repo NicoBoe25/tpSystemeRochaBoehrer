@@ -16,6 +16,13 @@ public class Enumeration {
                 "avec une distance de " +ddd);
     }
 
+    /**
+     *
+     * Pour obtenir les 430 solutions que nous vous avions présentées,
+     * il suffit d'ajouter un = dans le for ligne 33 comme ci-dessous
+     * for (int i = 0; i <= k-2; i++)
+     *
+     */
     public void makeHeapList(int k, ArrayList<Ville> currentListVille){
         if (k==1){
             String s = toStringList(currentListVille);
@@ -66,4 +73,8 @@ public class Enumeration {
         }
         return bestResult;
     }
+    public int compteur(){
+        return stringTreeMap.size();
+    }
+
 }
