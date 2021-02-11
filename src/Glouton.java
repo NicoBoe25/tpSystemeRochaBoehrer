@@ -12,7 +12,6 @@ public class Glouton {
 
         double res = 0;
 
-
         for (int i=0; i<liste.size()-1; i++){
             res += liste.get(i).calculDistance(liste.get(i+1));
         }
