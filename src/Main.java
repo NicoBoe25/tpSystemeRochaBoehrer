@@ -22,6 +22,8 @@ public class Main {
         Enumeration enumeration = new Enumeration(villeArrayList);
         System.out.println("Possibilités trouvées : "+enumeration.compteur());
 
-
+        Glouton glouton = new Glouton(villeArrayList);
+        glouton.run();
+        System.out.println("Distance glouton "+glouton.getDistanceGlouton());
     }
 }
