@@ -22,6 +22,7 @@ public class Enumeration {
      * il suffit d'ajouter un = dans le for ligne 33 comme ci-dessous
      * for (int i = 0; i <= k-2; i++)
      *
+     *
      */
     public void makeHeapList(int k, ArrayList<Ville> currentListVille){
         if (k==1){
