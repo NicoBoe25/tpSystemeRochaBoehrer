@@ -20,8 +20,8 @@ public class Ville {
         );
     }
 
-    @Override
-    public String toString() {
+
+    public String getNom() {
         return nom;
     }
 

@@ -20,7 +20,8 @@ public class Main {
         villeArrayList.add(villeF);
 
         Enumeration enumeration = new Enumeration(villeArrayList);
-        System.out.println(enumeration.compteur());
+        System.out.println("Possibilités trouvées : "+enumeration.compteur());
+
 
     }
 }
