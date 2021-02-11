@@ -27,7 +27,7 @@ public class Glouton {
                     bestChoice = distanceList.get(i);
                     indexOfBestChoice = i;
                 }
-                else if (bestChoice == distanceList.get(i)){
+                else if (bestChoice.equals(distanceList.get(i))){
                     compteur++;
                     listVilleSameDistance.add(listeVillesRestantes.get(i));
                 }
@@ -40,12 +40,17 @@ public class Glouton {
         }
     }
 
-    private Ville makeDecisionBetweenSameDistance(ArrayList<Ville> listVilleSameDistance) {
-        ArrayList<Double> distanceToHome = new ArrayList<>();
-        for (Ville ville:listVilleSameDistance) {
 
+    private Ville makeDecisionBetweenSameDistance(ArrayList<Ville> listVille) {
+        String nameVilleReturn = listVille.get(0).getNom();
+        int index=0;
+        for (int i = 1; i < listVille.size() ; i++) {
+            if (nameVilleReturn.compareTo(listVille.get(i).getNom()) > 0){
+                nameVilleReturn = listVille.get(i).getNom();
+                index=i;
+            }
         }
-        return null;
+        return listVille.get(index);
     }
 
     public ArrayList<Ville> getVisitees() {
