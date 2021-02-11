@@ -12,9 +12,9 @@ public class Enumeration {
         permute(villeArrayList,0);
 
         System.out.println(stringTreeMap);
-        double ddd = findMeilleureDistance();
-        System.out.println(stringTreeMap.get(ddd) + " est le chemin le plus court\n" +
-                "avec une distance de " + ddd);
+        String keyString = findMeilleureDistance();
+        System.out.println(keyString +  " est le chemin le plus court\n" +
+                "avec une distance de " + stringTreeMap.get(keyString));
     }
 
 
@@ -42,15 +42,16 @@ public class Enumeration {
     }
 
 
-    public double findMeilleureDistance() {
-        double bestResult = 9999999999999999.9;
-
+    public String findMeilleureDistance() {
+        double bestResult = Double.MAX_VALUE;
+        String keyString = "";
         for (Map.Entry<String,Double> kv : this.stringTreeMap.entrySet()) {
             if (bestResult > kv.getValue()) {
                 bestResult =  kv.getValue();
+                keyString=kv.getKey();
             }
         }
-        return bestResult;
+        return keyString;
     }
 
     public int compteur() {

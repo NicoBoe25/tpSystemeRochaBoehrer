@@ -1,17 +1,29 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Programme lancé");
+
         ArrayList<Ville> villeArrayList = createListSixVilles();
 
+
+        long startTime = System.currentTimeMillis();
         Enumeration enumeration = new Enumeration(villeArrayList);
         System.out.println("Possibilités trouvées : "+enumeration.compteur());
+        System.out.println("Timer task finished at:"+new Date());
+        long endTime = System.currentTimeMillis();
+        System.out.println("temps écoulé : "+(endTime - startTime)+" ms");
 
+
+        long startTime2 = System.currentTimeMillis();
         Glouton glouton = new Glouton(villeArrayList);
         glouton.run();
+        System.out.println(glouton.listeToString(glouton.getVisitees()));
         System.out.println("Distance glouton "+glouton.getDistanceGlouton());
+        long endTime2 = System.currentTimeMillis();
+        System.out.println("temps écoulé : "+(endTime2 - startTime2)+" ms");
     }
 
     private static ArrayList<Ville> createListSixVilles() {

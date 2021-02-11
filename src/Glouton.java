@@ -98,5 +98,13 @@ public class Glouton {
         this.distanceGlouton = distanceGlouton;
     }
 
+    public String listeToString(ArrayList<Ville> list){
+        String res ="";
+        for(Ville ville : list){
+            res+=ville.getNom();
+        }
+        return res;
+    }
+
 
 }
