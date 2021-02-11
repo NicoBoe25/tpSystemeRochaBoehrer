@@ -4,6 +4,17 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Programme lancé");
+        ArrayList<Ville> villeArrayList = createListSixVilles();
+
+        Enumeration enumeration = new Enumeration(villeArrayList);
+        System.out.println("Possibilités trouvées : "+enumeration.compteur());
+
+        Glouton glouton = new Glouton(villeArrayList);
+        glouton.run();
+        System.out.println("Distance glouton "+glouton.getDistanceGlouton());
+    }
+
+    private static ArrayList<Ville> createListSixVilles() {
         Ville villeA = new Ville("A",1,1);
         Ville villeB = new Ville("B",2,2);
         Ville villeC = new Ville("C",1,3);
@@ -18,12 +29,6 @@ public class Main {
         villeArrayList.add(villeD);
         villeArrayList.add(villeE);
         villeArrayList.add(villeF);
-
-        Enumeration enumeration = new Enumeration(villeArrayList);
-        System.out.println("Possibilités trouvées : "+enumeration.compteur());
-
-        Glouton glouton = new Glouton(villeArrayList);
-        glouton.run();
-        System.out.println("Distance glouton "+glouton.getDistanceGlouton());
+        return villeArrayList;
     }
 }
