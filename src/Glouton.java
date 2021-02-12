@@ -12,6 +12,7 @@ public class Glouton {
         this.distanceGlouton = 0.0;
 
     }
+    public Glouton(){}
 
     public void run(){
         Ville currentVille = new Ville("O",0,0);
@@ -25,7 +26,7 @@ public class Glouton {
         calculDistanceGlouton();
     }
 
-    private void calculDistanceGlouton() {
+    protected void calculDistanceGlouton() {
         double d = 0.0;
         for (int i = 0; i < visitees.size()-1; i++) {
             d+= visitees.get(i).calculDistance(visitees.get(i+1));
@@ -33,7 +34,7 @@ public class Glouton {
         setDistanceGlouton(d);
     }
 
-    private Ville nextVille(ArrayList<Ville> listeVillesRestantes, Ville currentVille){
+    protected Ville nextVille(ArrayList<Ville> listeVillesRestantes, Ville currentVille){
         ArrayList<Double> distanceList = new ArrayList<>();
         for (Ville v:listeVillesRestantes) {
             distanceList.add(currentVille.calculDistance(v));
@@ -90,11 +91,11 @@ public class Glouton {
     public void setNon_visitees(ArrayList<Ville> non_visitees) {
         this.non_visitees = non_visitees;
     }
-    public Double getDistanceGlouton() {
+    public double getDistanceGlouton() {
         return distanceGlouton;
     }
 
-    public void setDistanceGlouton(Double distanceGlouton) {
+    public void setDistanceGlouton(double distanceGlouton) {
         this.distanceGlouton = distanceGlouton;
     }
 
