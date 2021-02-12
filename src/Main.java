@@ -9,14 +9,14 @@ public class Main {
         ArrayList<Ville> villeArrayList = createListSixVilles();
 
 
-//        long startTime = System.currentTimeMillis();
-//        Enumeration enumeration = new Enumeration(villeArrayList);
-//        System.out.println("Possibilités trouvées : "+enumeration.compteur());
-//        System.out.println("Timer task finished at:"+new Date());
-//        long endTime = System.currentTimeMillis();
-//        System.out.println("temps écoulé : "+(endTime - startTime)+" ms");
-//
-//
+        long startTime = System.currentTimeMillis();
+        Enumeration enumeration = new Enumeration(villeArrayList);
+        System.out.println("Possibilités trouvées : "+enumeration.compteur());
+        System.out.println("Timer task finished at:"+new Date());
+        long endTime = System.currentTimeMillis();
+        System.out.println("temps écoulé : "+(endTime - startTime)+" ms");
+
+
         long startTime2 = System.nanoTime();
         Glouton glouton = new Glouton(villeArrayList);
         glouton.run();
@@ -26,14 +26,14 @@ public class Main {
         System.out.println("temps écoulé : "+(endTime2 - startTime2)+" ns");
 
 
-        long startTime3 = System.nanoTime();
-        GloutonDeuxVilles gloutonDeuxVilles = new GloutonDeuxVilles(villeArrayList);
-
-        gloutonDeuxVilles.run();
-        System.out.println(gloutonDeuxVilles.listeToString(gloutonDeuxVilles.getVisitees()));
-        System.out.println("Distance glouton2 "+gloutonDeuxVilles.getDistanceGlouton());
-        long endTime3 = System.nanoTime();
-        System.out.println("temps écoulé : "+(endTime3 - startTime3)+" ns");
+//        long startTime3 = System.nanoTime();
+//        GloutonDeuxVilles gloutonDeuxVilles = new GloutonDeuxVilles(villeArrayList);
+//
+//        gloutonDeuxVilles.run();
+//        System.out.println(gloutonDeuxVilles.listeToString(gloutonDeuxVilles.getVisitees()));
+//        System.out.println("Distance glouton2 "+gloutonDeuxVilles.getDistanceGlouton());
+//        long endTime3 = System.nanoTime();
+//        System.out.println("temps écoulé : "+(endTime3 - startTime3)+" ns");
 
 
     }
