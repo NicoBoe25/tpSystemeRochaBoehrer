@@ -2,12 +2,43 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Main {
+    static Ville villeA = new Ville("A",1,1);
+    static Ville villeB = new Ville("B",2,2);
+    static Ville villeC = new Ville("C",1,3);
+    static Ville villeD = new Ville("D",3,2);
+    static Ville villeE = new Ville("E",3,5);
+    static Ville villeF = new Ville("F",7,2);
+    static Ville villeG = new Ville("G",7,5);
+    static Ville villeH = new Ville("H",8,4);
+    static Ville villeI = new Ville("I",10,1);
+    static Ville villeJ = new Ville("J",11,5);
+    static Ville villeK = new Ville("K",1,14);
+    static Ville villeL = new Ville("L",2,8);
+    static Ville villeM = new Ville("M",5,1);
+    static Ville villeN = new Ville("N",6,0);
+    static Ville villeO = new Ville("O",6,6);
+    static Ville villeP = new Ville("P",7,12);
+    static Ville villeQ = new Ville("Q",8,14);
+    static Ville villeR = new Ville("R",9,1);
+    static Ville villeS = new Ville("S",9,4);
+    static Ville villeT = new Ville("T",9,14);
+    static Ville villeU = new Ville("U",10,5);
+    static Ville villeV = new Ville("V",11,1);
+    static Ville villeW = new Ville("W",11,12);
+    static Ville villeX = new Ville("X",13,12);
+    static Ville villeY = new Ville("Y",14,5);
+    static Ville villeZ = new Ville("Z",16,3);
+    static Ville ville1 = new Ville("1",21,12);
+    static Ville ville2 = new Ville("2",28,13);
+    static Ville ville3 = new Ville("3",30,1);
+    static Ville ville4 = new Ville("4",30,17);
+
+
 
     public static void main(String[] args) {
         System.out.println("Programme lancé");
 
         ArrayList<Ville> villeArrayList = createListSixVilles();
-
 
         long startTime = System.currentTimeMillis();
         Enumeration enumeration = new Enumeration(villeArrayList);
@@ -36,23 +67,85 @@ public class Main {
 //        System.out.println("temps écoulé : "+(endTime3 - startTime3)+" ns");
 
 
+
+//----------------- 10 Villes -----------------------------------------//
+
+        villeArrayList.clear();
+        villeArrayList = createListDixVilles();
+
+
+        //refaire avec 10 villes
+
+//----------------- 15 Villes -----------------------------------------//
+        villeArrayList.clear();
+        villeArrayList = createListQuinzeVilles();
+
+        //.....
+
+
+//----------------- 30 Villes -----------------------------------------//
+        villeArrayList.clear();
+        villeArrayList = createListTrenteVilles();
+
+        //.....
+
+
     }
+
+
 
     private static ArrayList<Ville> createListSixVilles() {
-        Ville villeA = new Ville("A",1,1);
-        Ville villeB = new Ville("B",2,2);
-        Ville villeC = new Ville("C",1,3);
-        Ville villeD = new Ville("D",3,2);
-        Ville villeE = new Ville("E",3,5);
-        Ville villeF = new Ville("F",7,2);
 
-        ArrayList<Ville> villeArrayList = new ArrayList<>();
-        villeArrayList.add(villeA);
-        villeArrayList.add(villeB);
-        villeArrayList.add(villeC);
-        villeArrayList.add(villeD);
-        villeArrayList.add(villeE);
-        villeArrayList.add(villeF);
-        return villeArrayList;
+        ArrayList<Ville> villeList = new ArrayList<>();
+        villeList.add(villeA);
+        villeList.add(villeB);
+        villeList.add(villeC);
+        villeList.add(villeD);
+        villeList.add(villeE);
+        villeList.add(villeF);
+        return villeList;
     }
+    private static ArrayList<Ville> createListDixVilles() {
+        ArrayList<Ville> villeList;
+        villeList = createListSixVilles();
+        villeList.add(villeG);
+        villeList.add(villeH);
+        villeList.add(villeI);
+        villeList.add(villeJ);
+        return villeList;
+    }
+
+    private static ArrayList<Ville> createListQuinzeVilles() {
+        ArrayList<Ville> villeList;
+        villeList = createListDixVilles();
+        villeList.add(villeK);
+        villeList.add(villeL);
+        villeList.add(villeM);
+        villeList.add(villeN);
+        villeList.add(villeO);
+        return villeList;
+    }
+
+    private static ArrayList<Ville> createListTrenteVilles() {
+        ArrayList<Ville> villeList;
+        villeList = createListQuinzeVilles();
+        villeList.add(villeP);
+        villeList.add(villeQ);
+        villeList.add(villeR);
+        villeList.add(villeS);
+        villeList.add(villeT);
+        villeList.add(villeU);
+        villeList.add(villeV);
+        villeList.add(villeW);
+        villeList.add(villeX);
+        villeList.add(villeY);
+        villeList.add(villeZ);
+        villeList.add(ville1);
+        villeList.add(ville2);
+        villeList.add(ville3);
+        villeList.add(ville4);
+
+        return villeList;
+    }
+
 }
