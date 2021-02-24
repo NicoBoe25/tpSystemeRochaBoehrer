@@ -42,9 +42,7 @@ public class Glouton {
         }
         double bestChoice = distanceList.get(0);
         int indexOfBestChoice = 0;
-        int compteur=0;
-        ArrayList<Ville> listVilleSameDistance = new ArrayList<>();
-        listVilleSameDistance.add(currentVille);
+
         if (distanceList.size()>1){
             for (int i = 1; i < distanceList.size(); i++) {
                 if (bestChoice > distanceList.get(i)){
@@ -52,29 +50,25 @@ public class Glouton {
                     indexOfBestChoice = i;
                 }
                 else if (bestChoice==distanceList.get(i)){
-                    compteur++;
-                    listVilleSameDistance.add(listeVillesRestantes.get(i));
+                    int indexChosen = compareBetweenSameDistance(listeVillesRestantes,indexOfBestChoice,i);
+                    if (indexChosen==i){
+                        bestChoice = distanceList.get(i);
+                        indexOfBestChoice = i;
+                    }
                 }
             }
         }
-        if (compteur==0){
-            return listeVillesRestantes.get(indexOfBestChoice);
-        }else {
-            return makeDecisionBetweenSameDistance(listVilleSameDistance);
-        }
+        return listeVillesRestantes.get(indexOfBestChoice);
     }
 
 
-    private Ville makeDecisionBetweenSameDistance(ArrayList<Ville> listVille) {
-        String nameVilleReturn = listVille.get(0).getNom();
-        int index=0;
-        for (int i = 1; i < listVille.size() ; i++) {
-            if (nameVilleReturn.compareTo(listVille.get(i).getNom()) > 0){
-                nameVilleReturn = listVille.get(i).getNom();
-                index=i;
-            }
+    private int compareBetweenSameDistance(ArrayList<Ville> listVille, int currentBestChoice, int indexChoice) {
+        if (listVille.get(currentBestChoice).getNom().compareTo(listVille.get(indexChoice).getNom()) > 0){
+            return indexChoice;
+        }else {
+            return currentBestChoice;
         }
-        return listVille.get(index);
+
     }
 
     public ArrayList<Ville> getVisitees() {

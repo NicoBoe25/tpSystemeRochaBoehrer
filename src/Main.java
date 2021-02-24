@@ -33,8 +33,6 @@ public class Main {
     static Ville ville3 = new Ville("3",30,1);
     static Ville ville4 = new Ville("4",30,17);
 
-
-
     public static void main(String[] args) {
         System.out.println("Programme lancé");
 
@@ -47,24 +45,14 @@ public class Main {
         long endTime = System.currentTimeMillis();
         System.out.println("temps écoulé : "+(endTime - startTime)+" ms");
 
-/*
+
         long startTime2 = System.nanoTime();
         Glouton glouton = new Glouton(villeArrayList);
         glouton.run();
         System.out.println(glouton.listeToString(glouton.getVisitees()));
         System.out.println("Distance glouton "+glouton.getDistanceGlouton());
         long endTime2 = System.nanoTime();
-        System.out.println("temps écoulé : "+(endTime2 - startTime2)+" ns");
-*/
-        /*
-        long startTime3 = System.nanoTime();
-        GloutonDeuxVilles gloutonDeuxVilles = new GloutonDeuxVilles(villeArrayList);
-        gloutonDeuxVilles.run();
-        System.out.println(gloutonDeuxVilles.listeToString(gloutonDeuxVilles.getVisitees()));
-        System.out.println("Distance glouton2 "+gloutonDeuxVilles.getDistanceGlouton());
-        long endTime3 = System.nanoTime();
-        System.out.println("temps écoulé : "+(endTime3 - startTime3)+" ns");
-        */
+        System.out.println("temps écoulé : "+(endTime2 - startTime2)+" ns soit "+(endTime2 - startTime2)/1000000+" ms");
 
 
 //----------------- 10 Villes -----------------------------------------//
@@ -72,20 +60,27 @@ public class Main {
         villeArrayList.clear();
         villeArrayList = createListDixVilles();
 
-        System.out.println("TEST GLOUTON 10");
-        long startTime5 = System.nanoTime();
-        Glouton glouton2 = new Glouton(villeArrayList);
-        glouton2.run();
-        System.out.println(glouton2.listeToString(glouton2.getVisitees()));
-        System.out.println("Distance glouton "+glouton2.getDistanceGlouton());
-        long endTime5 = System.nanoTime();
-        System.out.println("temps écoulé : "+(endTime5 - startTime5)+" ns");
+        long startTime20 = System.nanoTime();
+        Glouton glouton10 = new Glouton(villeArrayList);
+        glouton10.run();
+        System.out.println(glouton10.listeToString(glouton10.getVisitees()));
+        System.out.println("Distance glouton "+glouton10.getDistanceGlouton());
+        long endTime20 = System.nanoTime();
+        System.out.println("temps écoulé : "+(endTime20 - startTime20)+" ns soit "+(endTime20 - startTime20)/1000000+" ms");
         //refaire avec 10 villes
 
 //----------------- 15 Villes -----------------------------------------//
         villeArrayList.clear();
         villeArrayList = createListQuinzeVilles();
 
+        System.out.println("TEST GLOUTON 15");
+        long startTime5 = System.nanoTime();
+        Glouton glouton2 = new Glouton(villeArrayList);
+        glouton2.run();
+        System.out.println(glouton2.listeToString(glouton2.getVisitees()));
+        System.out.println("Distance glouton "+glouton2.getDistanceGlouton());
+        long endTime5 = System.nanoTime();
+        System.out.println("temps écoulé : "+(endTime5 - startTime5)+" ns soit "+(endTime5 - startTime5)/1000000+" ms");
 
 
 
@@ -93,7 +88,14 @@ public class Main {
         villeArrayList.clear();
         villeArrayList = createListTrenteVilles();
 
-
+        System.out.println("TEST GLOUTON 30");
+        long startTime30 = System.nanoTime();
+        Glouton glouton30 = new Glouton(villeArrayList);
+        glouton30.run();
+        System.out.println(glouton30.listeToString(glouton30.getVisitees()));
+        System.out.println("Distance glouton "+glouton30.getDistanceGlouton());
+        long endTime30 = System.nanoTime();
+        System.out.println("temps écoulé : "+(endTime30 - startTime30)+" ns soit "+(endTime30 - startTime30)/1000000+" ms");
 
 
     }
