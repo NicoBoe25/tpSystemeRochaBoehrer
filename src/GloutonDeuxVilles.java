@@ -8,7 +8,8 @@ public class GloutonDeuxVilles extends Glouton {
 
     public GloutonDeuxVilles(ArrayList<Ville> list){
         super();
-        this.non_visitees=list;
+        this.non_visitees=new ArrayList<>();
+        non_visitees.addAll(list);
         this.distanceGlouton=0.0;
         this.visitees=new ArrayList<>();
     }
