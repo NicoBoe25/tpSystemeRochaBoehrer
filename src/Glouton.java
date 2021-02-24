@@ -7,7 +7,8 @@ public class Glouton {
     private double distanceGlouton;
 
     public Glouton(ArrayList<Ville> list){
-        this.non_visitees = list;
+        this.non_visitees = new ArrayList<>();
+        this.non_visitees.addAll(list);
         this.visitees = new ArrayList<>();
         this.distanceGlouton = 0.0;
 
