@@ -40,15 +40,22 @@ public class Main {
 
         ArrayList<Ville> villeArrayList = createListSixVilles();
 
-        Individu individu = new Individu(villeArrayList);
+        Individu individu = new Individu(92929,villeArrayList,true);
         individu.print();
-        System.out.println(individu.getFitness());
+        System.out.println(individu.getDistance());
 
         Population p = new Population(6,villeArrayList);
 
         for (Individu ind : p.getListeIndividu()) {
             System.out.println(ind.getNote());
         }
+
+        Individu res = p.getListeIndividu().get(0).croise(p.getListeIndividu().get(1));
+        res.print();
+        Population p2 = p.nextGen();
+        System.out.println("________ POPULATION ________");
+        System.out.println(p.findBestIndividu().getDistance());
+        System.out.println(p2.findBestIndividu().getDistance());
 /*
         long startTime = System.currentTimeMillis();
         Enumeration enumeration = new Enumeration(villeArrayList);
