@@ -38,8 +38,33 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Programme lancé");
 
-        ArrayList<Ville> villeArrayList = createListSixVilles();
 
+        ArrayList<Ville> villeArrayList = createListSixVilles();
+        long start = System.currentTimeMillis();
+        Genetique g = new Genetique(50,villeArrayList);
+        g.run(500);
+        long end = System.currentTimeMillis();
+        System.out.println("temps écoulé : "+(end - start)+" ms");
+
+
+        Individu bestIndividu=null;
+        for (int i = 0; i < 100; i++) {
+        ArrayList<Ville> villeArrayList2 = createListTrenteVilles();
+        long start2 = System.currentTimeMillis();
+        Genetique g2 = new Genetique(100,villeArrayList2);
+        Individu temp = g2.run(100);
+        long end2 = System.currentTimeMillis();
+        if(bestIndividu!=null && temp.getDistance()<bestIndividu.getDistance()){
+            bestIndividu = temp ;
+        }else if(bestIndividu==null){
+            bestIndividu=temp;
+        }
+        System.out.println("temps écoulé : "+(end2 - start2)+" ms");
+        }
+        System.out.println("best of the best = "+bestIndividu);
+        bestIndividu.print();
+
+/*
         Individu individu = new Individu(92929,villeArrayList,true);
         individu.print();
         System.out.println(individu.getDistance());
@@ -56,6 +81,17 @@ public class Main {
         System.out.println("________ POPULATION ________");
         System.out.println(p.findBestIndividu().getDistance());
         System.out.println(p2.findBestIndividu().getDistance());
+        */
+
+
+
+
+
+
+
+
+
+
 /*
         long startTime = System.currentTimeMillis();
         Enumeration enumeration = new Enumeration(villeArrayList);

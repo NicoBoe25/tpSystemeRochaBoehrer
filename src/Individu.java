@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class Individu {
 
@@ -57,37 +59,27 @@ public class Individu {
 
 
     public Individu croise(Individu partenaire){
-        System.out.println("pere");
-        this.print();
-        System.out.println("mere");
-        partenaire.print();
+        double mutationRate = 0.25;
         ArrayList<Ville> phenotypeP = this.chemin;
         ArrayList<Ville> phenotypeM = partenaire.chemin;
         ArrayList<Ville> phenotypeE = new ArrayList<>();
         for (int i = 0; i < phenotypeM.size(); i++) {
             double val = Math.random();
-            System.out.println("val = "+val);
             // sup à 0.5 -> mère
             if (val>=0.5){
                 if(!phenotypeE.contains(phenotypeM.get(i))) {
                     phenotypeE.add(i,phenotypeM.get(i));
-                    System.out.println("choisi : "+phenotypeM.get(i).getNom());
-                    afficheListe(phenotypeE);
                 }else if(!phenotypeE.contains(phenotypeP.get(i))){
                     phenotypeE.add(i,phenotypeP.get(i));
-                    System.out.println("choisi : "+phenotypeP.get(i).getNom());
                 }
             }else {
                 if (!phenotypeE.contains(phenotypeP.get(i))) {
                     phenotypeE.add(i,phenotypeP.get(i));
-                    System.out.println("choisi2 : "+phenotypeP.get(i).getNom());
                 } else if (!phenotypeE.contains(phenotypeM.get(i))) {
                     phenotypeE.add(i,phenotypeM.get(i));
-                    System.out.println("choisi2 : "+phenotypeM.get(i).getNom());
                 }
             }
             if(phenotypeE.size()!=i+1){
-                System.out.println("ON PASSE PAR LE GENIE DE NICO");
                 for (int j = 0; j < i ; j++) {
                     if(!phenotypeE.contains(phenotypeM.get(j))){
                         phenotypeE.add(i,phenotypeM.get(j));
@@ -98,8 +90,23 @@ public class Individu {
             }
         }
 
+        if(Math.random()<mutationRate){
+            //to comment for no mutations
+            //phenotypeE = mute(phenotypeE);
+        }
         return new Individu(555, phenotypeE,false);
 
+    }
+
+    public ArrayList<Ville> mute(ArrayList<Ville> list){
+        int id1ToSwap = new Random().nextInt(list.size());
+        int id2ToSwap = id1ToSwap;
+        do{
+            id2ToSwap = new Random().nextInt(list.size());
+        }while(id2ToSwap==id1ToSwap);
+        Collections.swap(list,id1ToSwap,id2ToSwap);
+
+        return list;
     }
 
 
@@ -109,6 +116,7 @@ public class Individu {
             System.out.print(v.getNom());
         }
         System.out.println();
+
     }
 
     public ArrayList<Ville> getChemin() {
@@ -143,6 +151,10 @@ public class Individu {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+         afficheListe(this.chemin);
+         return "distance = "+distance;
 
-
+    }
 }

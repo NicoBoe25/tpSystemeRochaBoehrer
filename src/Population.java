@@ -41,6 +41,7 @@ public class Population {
         return new Population(newPopulation);
     }
 
+
     public Individu findBestIndividu(){
         double bestChoice = Double.MIN_VALUE;
         int id=0;
