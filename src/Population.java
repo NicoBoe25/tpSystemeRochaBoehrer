@@ -3,8 +3,6 @@ import java.util.ArrayList;
 
 public class Population {
 
-
-
     private ArrayList<Individu> listeIndividu;
 
     public Population(int size, ArrayList<Ville> listeVille){

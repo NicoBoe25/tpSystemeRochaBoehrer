@@ -2,8 +2,6 @@ import java.util.ArrayList;
 
 public class Genetique {
 
-
-
     private Population pop;
     private Individu bestIndividu;
 

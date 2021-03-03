@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Main {
     static Ville villeA = new Ville("A",1,1);
@@ -37,132 +36,151 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Programme lancé");
-
+        System.out.println("---------------------Test 6 Villes-----------------------------");
 
         ArrayList<Ville> villeArrayList = createListSixVilles();
-        long start = System.currentTimeMillis();
-        Genetique g = new Genetique(50,villeArrayList);
-        g.run(500);
-        long end = System.currentTimeMillis();
-        System.out.println("temps écoulé : "+(end - start)+" ms");
 
-
-        Individu bestIndividu=null;
-        for (int i = 0; i < 100; i++) {
-        ArrayList<Ville> villeArrayList2 = createListTrenteVilles();
-        long start2 = System.currentTimeMillis();
-        Genetique g2 = new Genetique(100,villeArrayList2);
-        Individu temp = g2.run(100);
-        long end2 = System.currentTimeMillis();
-        if(bestIndividu!=null && temp.getDistance()<bestIndividu.getDistance()){
-            bestIndividu = temp ;
-        }else if(bestIndividu==null){
-            bestIndividu=temp;
-        }
-        System.out.println("temps écoulé : "+(end2 - start2)+" ms");
-        }
-        System.out.println("best of the best = "+bestIndividu);
-        bestIndividu.print();
-
-/*
-        Individu individu = new Individu(92929,villeArrayList,true);
-        individu.print();
-        System.out.println(individu.getDistance());
-
-        Population p = new Population(6,villeArrayList);
-
-        for (Individu ind : p.getListeIndividu()) {
-            System.out.println(ind.getNote());
-        }
-
-        Individu res = p.getListeIndividu().get(0).croise(p.getListeIndividu().get(1));
-        res.print();
-        Population p2 = p.nextGen();
-        System.out.println("________ POPULATION ________");
-        System.out.println(p.findBestIndividu().getDistance());
-        System.out.println(p2.findBestIndividu().getDistance());
-        */
-
-
-
-
-
-
-
-
-
-
-/*
-        long startTime = System.currentTimeMillis();
+        System.out.println("Enumération :");
+        long startTimeEnumeration = System.currentTimeMillis();
         Enumeration enumeration = new Enumeration(villeArrayList);
+        long endTimeEnumeration = System.currentTimeMillis();
         System.out.println("Possibilités trouvées : "+enumeration.compteur());
-        System.out.println("Timer task finished at:"+new Date());
-        long endTime = System.currentTimeMillis();
-        System.out.println("temps écoulé : "+(endTime - startTime)+" ms");
-*/
-/*
-        long startTime2 = System.nanoTime();
+        System.out.println("temps écoulé : "+(endTimeEnumeration - startTimeEnumeration)+" ms");
+
+        System.out.println("Glouton :");
+        long startTimeGlouton = System.nanoTime();
         Glouton glouton = new Glouton(villeArrayList);
         glouton.run();
         System.out.println(glouton.listeToString(glouton.getVisitees()));
         System.out.println("Distance glouton "+glouton.getDistanceGlouton());
-        long endTime2 = System.nanoTime();
-        System.out.println("temps écoulé : "+(endTime2 - startTime2)+" ns");
-*/
-        /*
-        long startTime3 = System.nanoTime();
-        GloutonDeuxVilles gloutonDeuxVilles = new GloutonDeuxVilles(villeArrayList);
-        gloutonDeuxVilles.run();
-        System.out.println(gloutonDeuxVilles.listeToString(gloutonDeuxVilles.getVisitees()));
-        System.out.println("Distance glouton2 "+gloutonDeuxVilles.getDistanceGlouton());
-        long endTime3 = System.nanoTime();
-        System.out.println("temps écoulé : "+(endTime3 - startTime3)+" ns");
-        */
+        long endTimeGlouton = System.nanoTime();
+        System.out.println("temps écoulé : "+(endTimeGlouton - startTimeGlouton)+" ns");
 
 
-//----------------- 10 Villes -----------------------------------------//
-/*
+        Individu bestIndividu=null;
+        for (int i = 0; i < 100; i++) {
+            ArrayList<Ville> villeArrayList2 = createListSixVilles();
+            long startTimeGenetique = System.currentTimeMillis();
+            Genetique g2 = new Genetique(100,villeArrayList2);
+            Individu temp = g2.run(100);
+            long endTimeGenetique = System.currentTimeMillis();
+            if(bestIndividu!=null && temp.getDistance()<bestIndividu.getDistance()){
+                bestIndividu = temp ;
+            }else if(bestIndividu==null){
+                bestIndividu=temp;
+            }
+            System.out.println("temps écoulé : "+(endTimeGenetique - startTimeGenetique)+" ms");
+        }
+        System.out.println("best of the best = "+bestIndividu);
+        bestIndividu.print();
+
         villeArrayList.clear();
+//----------------- 10 Villes -----------------------------------------//
+        System.out.println("---------------------Test 10 Villes-----------------------------");
         villeArrayList = createListDixVilles();
 
-        long startTime20 = System.nanoTime();
+        System.out.println("Enumération :");
+        startTimeEnumeration = System.currentTimeMillis();
+        Enumeration enumeration10 = new Enumeration(villeArrayList);
+        endTimeEnumeration = System.currentTimeMillis();
+        System.out.println("Possibilités trouvées : "+enumeration10.compteur());
+        System.out.println("temps écoulé : "+(endTimeEnumeration - startTimeEnumeration)+" ms");
+
+
+        startTimeGlouton = System.nanoTime();
         Glouton glouton10 = new Glouton(villeArrayList);
         glouton10.run();
         System.out.println(glouton10.listeToString(glouton10.getVisitees()));
         System.out.println("Distance glouton "+glouton10.getDistanceGlouton());
-        long endTime20 = System.nanoTime();
-        System.out.println("temps écoulé : "+(endTime20 - startTime20)+" ns soit "+(endTime20 - startTime20)/1000000+" ms");
-        //refaire avec 10 villes
-*/
-//----------------- 15 Villes -----------------------------------------//
-        /*
+        endTimeGlouton = System.nanoTime();
+        System.out.println("temps écoulé : "+(endTimeGlouton - startTimeGlouton)+" ns soit "+(endTimeGlouton - startTimeGlouton)/1000000+" ms");
+
+
+        bestIndividu=null;
+        for (int i = 0; i < 100; i++) {
+            ArrayList<Ville> villeArrayList2 = createListDixVilles();
+            long start2 = System.currentTimeMillis();
+            Genetique g2 = new Genetique(100,villeArrayList2);
+            Individu temp = g2.run(100);
+            long end2 = System.currentTimeMillis();
+            if(bestIndividu!=null && temp.getDistance()<bestIndividu.getDistance()){
+                bestIndividu = temp ;
+            }else if(bestIndividu==null){
+                bestIndividu=temp;
+            }
+            System.out.println("temps écoulé : "+(end2 - start2)+" ms");
+        }
+        System.out.println("best of the best = "+bestIndividu);
+        bestIndividu.print();
+
         villeArrayList.clear();
+//----------------- 15 Villes -----------------------------------------//
+        System.out.println("---------------------Test 15 Villes-----------------------------");
+
         villeArrayList = createListQuinzeVilles();
 
-        System.out.println("TEST GLOUTON 15");
-        long startTime5 = System.nanoTime();
-        Glouton glouton2 = new Glouton(villeArrayList);
-        glouton2.run();
-        System.out.println(glouton2.listeToString(glouton2.getVisitees()));
-        System.out.println("Distance glouton "+glouton2.getDistanceGlouton());
-        long endTime5 = System.nanoTime();
-        System.out.println("temps écoulé : "+(endTime5 - startTime5)+" ns soit "+(endTime5 - startTime5)/1000000+" ms");
-/*
+        System.out.println("Enumération = Out of bound exception");
+
+        startTimeGlouton = System.nanoTime();
+        Glouton glouton15 = new Glouton(villeArrayList);
+        glouton15.run();
+        System.out.println(glouton15.listeToString(glouton15.getVisitees()));
+        System.out.println("Distance glouton "+glouton15.getDistanceGlouton());
+        endTimeGlouton = System.nanoTime();
+        System.out.println("temps écoulé : "+(endTimeGlouton - startTimeGlouton)+" ns soit "+(endTimeGlouton - startTimeGlouton)/1000000+" ms");
+
+
+        bestIndividu=null;
+        for (int i = 0; i < 100; i++) {
+            ArrayList<Ville> villeArrayList2 = createListQuinzeVilles();
+            long start2 = System.currentTimeMillis();
+            Genetique g2 = new Genetique(100,villeArrayList2);
+            Individu temp = g2.run(100);
+            long end2 = System.currentTimeMillis();
+            if(bestIndividu!=null && temp.getDistance()<bestIndividu.getDistance()){
+                bestIndividu = temp ;
+            }else if(bestIndividu==null){
+                bestIndividu=temp;
+            }
+            System.out.println("temps écoulé : "+(end2 - start2)+" ms");
+        }
+        System.out.println("best of the best = "+bestIndividu);
+        bestIndividu.print();
+
+        villeArrayList.clear();
 
 //----------------- 30 Villes -----------------------------------------//
-        villeArrayList.clear();
         villeArrayList = createListTrenteVilles();
 
-        System.out.println("TEST GLOUTON 30");
-        long startTime50 = System.nanoTime();
+        System.out.println("---------------------Test 30 Villes-----------------------------");
+
+        startTimeGlouton = System.nanoTime();
         Glouton glouton30 = new Glouton(villeArrayList);
         glouton30.run();
         System.out.println(glouton30.listeToString(glouton30.getVisitees()));
         System.out.println("Distance glouton "+glouton30.getDistanceGlouton());
-        long endTime50 = System.nanoTime();
-        System.out.println("temps écoulé : "+(endTime50 - startTime50)+" ns soit "+(endTime50 - startTime50)/1000000+" ms");
-  */
+        endTimeGlouton = System.nanoTime();
+        System.out.println("temps écoulé : "+(endTimeGlouton - startTimeGlouton)+" ns soit "+(endTimeGlouton - startTimeGlouton)/1000000+" ms");
 
+
+        bestIndividu=null;
+        for (int i = 0; i < 100; i++) {
+            ArrayList<Ville> villeArrayList2 = createListQuinzeVilles();
+            long start2 = System.currentTimeMillis();
+            Genetique g2 = new Genetique(100,villeArrayList2);
+            Individu temp = g2.run(100);
+            long end2 = System.currentTimeMillis();
+            if(bestIndividu!=null && temp.getDistance()<bestIndividu.getDistance()){
+                bestIndividu = temp ;
+            }else if(bestIndividu==null){
+                bestIndividu=temp;
+            }
+            System.out.println("temps écoulé : "+(end2 - start2)+" ms");
+        }
+        System.out.println("best of the best = "+bestIndividu);
+        bestIndividu.print();
+
+        villeArrayList.clear();
     }
 
 
@@ -187,7 +205,6 @@ public class Main {
         villeList.add(villeJ);
         return villeList;
     }
-
     private static ArrayList<Ville> createListQuinzeVilles() {
         ArrayList<Ville> villeList;
         villeList = createListDixVilles();
@@ -198,7 +215,6 @@ public class Main {
         villeList.add(villeO);
         return villeList;
     }
-
     private static ArrayList<Ville> createListTrenteVilles() {
         ArrayList<Ville> villeList;
         villeList = createListQuinzeVilles();

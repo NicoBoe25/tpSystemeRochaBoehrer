@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class Individu {
 
-
-
     private ArrayList<Ville> chemin = new ArrayList<>();
     private double distance;
     private int id;
@@ -92,7 +90,7 @@ public class Individu {
 
         if(Math.random()<mutationRate){
             //to comment for no mutations
-            //phenotypeE = mute(phenotypeE);
+            phenotypeE = mute(phenotypeE);
         }
         return new Individu(555, phenotypeE,false);
 
